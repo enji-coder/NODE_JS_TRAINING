@@ -1,0 +1,211 @@
+Q.1 : What is the difference between Java & JavaScript?
+=> Java and Javascript both are language but java is a object oriented most powerfull 
+    programing language when javascript which is a most powerful scripting language 
+
+    java which is run on virtual machine when javascript which is run on web browser 
+    java which is used to develop web application - javascript which is used to control 
+    behaviour of web pages and which is client side scripting language 
+
+    java program save with .java extension and javascript file save with .js extension
+
+
+Q.2 : what is javascript ? 
+=>  javascript is a most popular scripting language which is control web pages behaviour , can control many more things on website e.g.  multimedia, animation , dynamic content 
+
+    javascript is a client side scripting language.
+    javascript is a dynamic type scripting language.
+
+Q.3 : What are the data types supported by JavaScript?
+=>  Datatype : which type of value store in a variable its called data type 
+
+    there are mainly 8 types of datatype in javascript 
+
+    -> Number (for numeric values)
+    -> String (biggest data type which is contain all the characters and numeric values)
+    -> Bigint (which is contain large amount of int value)
+    -> Boolean (true and false value)
+    -> undefined (when vaiable does not contain any value)
+    -> symbol  
+    -> object  (which is similar like map)
+        -> Array  (which is contain multiple elements in single elements)
+        -> Date   (which is used to represent Date)
+
+Q.4 : What are the scopes of a variable in JavaScript?
+=>  scope which is repsent variable define area 
+
+    there are mainly 2 types of variable scope 
+
+    1) local variable : which is declare inside the function - we can't access it outside the function or method 
+    2) global variable : which is declare anywhere in the program and we can access anywhere in the program.
+
+
+Q.5 : What is Callback?
+=>  Callback is a special function which is passed as a parameter in another function 
+    --------------------------------------------------------------------------
+    e.g 1
+    function myFun()
+    {
+        console.log("Hello welcome to node.js");
+    }
+    function addition(num1,num2,callback)
+    {
+        console.log(num1 + num2);   
+        callback();
+    }
+
+    addition(10,20,myFun)
+    --------------------------------------------------------------------------
+
+    e.g. 2
+    addition(2,3,function(){
+        console.log("hey i am Anonymous function ")
+    })
+    --------------------------------------------------------------------------
+
+Q.6 : What is Closure? Give an example.
+
+=>    A Closure is a function which can access properties of parent scope. 
+
+      A Closure is a inner function that has access to the outer function variables. 
+
+      clouse have 3 scope 
+
+        -> local scope 
+        -> outer function scope 
+        -> global scope 
+        
+
+    practical Example : 
+    --------------------------------------------------------------------------
+    var i = 10 // creating variable 
+
+    function myfun()
+    {
+        var j = 20;
+        console.log(i);  // closure can access parent or outside the variable inside 
+        console.log(j);
+    }
+
+    myfun();
+    --------------------------------------------------------------------------
+    // it is similar like nested function 
+
+    function OuterFunction()
+    {
+        var n1 = 10;
+
+        function innerFunction()
+        {
+            var n2 = 20;
+            console.log("n1 = "+n1);
+            console.log("n2 = "+n2);
+        }
+        // console.log("n2 = "+n2); it will generate error when we call local variable outside the innerFunction
+        innerFunction();
+    }
+
+    OuterFunction();
+
+
+Q7. What is the difference between the operators ‘==‘ & ‘===‘?
+=>
+    == which means Equality operator which compares values only
+
+    === which means Strict equality which compares datatype and values 
+    --------------------------------------------------------------------------
+    var x = 10
+    var y = "10"
+
+    if (x == y)
+    {
+        console.log("both are same")
+    }
+    else
+    {
+        console.log("both are different")
+    }
+
+    // result : both are same because both variables have same value 
+
+    --------------------------------------------------------------------------
+    var x = 10
+    var y = "10"
+
+    if (x === y)
+    {
+        console.log("both are same")
+    }
+    else
+    {
+        console.log("both are different")
+    }
+    // result : both are different because both variables have same value but datatype not same  
+
+Q8. What is the difference between null & undefined?
+=> 
+    // undefined : variable declared but no value assign its called undefined
+    var x;
+    console.log(x)
+    console.log(typeof x)
+
+
+    // null : means variable having no values (null is an object in javascript)
+    var y = null 
+    console.log(y)
+    console.log(typeof y)
+
+Q9. What would be the result of 2+5+”3″?
+=>
+        
+    var a = 2 
+    var b = 5
+    var c = "3"
+
+    console.log(a + b + c)
+
+    // 2 + 3 = 7 
+    // 7 + "3" = 73 (concatenation)
+
+
+Q10. What is the difference between Call & Apply?
+=> Using of call method we can access other method of different object.
+    --------------------------------------------------------------------------
+    // call example 
+
+    Person = {
+        fullname : function()
+        {
+            console.log(this.firstname + " "+this.lastname);
+        }
+    }
+
+    Student1 = {
+        firstname : "Anjali",
+        lastname : "Patel",
+    }
+
+    Student2 = {
+        firstname : "Shreya",
+        lastname : "shah",
+    }
+
+    Person.fullname.call(Student1)
+    Person.fullname.call(Student2)
+    --------------------------------------------------------------------------
+
+    call methods takes arguments separately and apply() method takes arguments as an array.
+
+
+    Person = {
+    fullname : function(subjects) {
+            console.log(this.firstname +" "+ this.lastname +" "+subjects)
+        }
+    }
+
+    Stu1 = {
+        firstname : "Anjali",
+        lastname : "Patel",
+    }
+
+    Person.fullname.apply(Stu1,["flutter","Python"]);
+    --------------------------------------------------------------------------
