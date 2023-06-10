@@ -1,0 +1,2 @@
+Q1. What is Node.js? Where can you use it?
+=> Node.js is an open source , cross platform, javascript runtime environment
