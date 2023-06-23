@@ -3,7 +3,8 @@ const express = require("express")
 const routes = express.Router()
 
 routes.get("/",(request,response)=>{
-    response.send("this is response from routes")
+    // response.send("this is response from routes")
+    response.render("index")
 })
 
 // now we need to export this routes variable in another files so, use below line 

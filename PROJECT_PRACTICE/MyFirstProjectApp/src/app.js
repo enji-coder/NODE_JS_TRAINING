@@ -12,6 +12,12 @@ const  routes = require("./routes/main")
 app.use("",routes)
 
 
+// step 3: configure template engine 
+// need to set template engine 
+app.set("view engine","hbs")
+app.set("views","views")
+
+
 app.listen(process.env.PORT | 9000,()=>{
     console.log("server started : ")
     
