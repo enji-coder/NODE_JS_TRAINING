@@ -52,9 +52,10 @@ now, need to create project structure properly
 
 projectname 
 |- src   // server side all data contain in src folder 
-    |- routes 
+    |- routes
+        |- main.js 
     |- models
-    app.js  (main executable file )
+    app.js      (main executable file )
 |- public    // all assets will contain in public folder 
     |- css
     |- js
@@ -72,12 +73,14 @@ const express = require("express")
 
 const app = express() // creating express application 
 
-
-
-app.listen(process.env.PORT,()=>{
-    console.log("server started")
+app.get("/",(request,response)=>{
+    response.send("Welcome to node app")
 })
 
+
+app.listen(process.env.PORT | 9000,()=>{
+    console.log("server started : ")
+})
 
 => now run your server using npm start command 
 
@@ -85,3 +88,44 @@ and open google chrome -> localhost:9000/
 
 
 ================================================
+step 2 : 
+src/routes/main.js
+
+
+const express = require("express")
+
+const routes = express.Router()
+
+routes.get("/",(request,response)=>{
+    response.send("this is response from routes")
+})
+
+// now we need to export this routes variable in another files so, use below line 
+
+module.exports = routes
+
+======>>>>>>>>>>>   app.js import 
+
+const express = require("express")
+
+const app = express() // creating express application 
+
+app.get("/",(request,response)=>{
+    response.send("Welcome to node app")
+})
+
+// step 2 : configure routes 
+// need to import that routes from main.js 
+const  routes = require("./routes/main")
+app.use("",routes)
+
+
+app.listen(process.env.PORT | 9000,()=>{
+    console.log("server started : ")
+})
+
+====================================================
+
+
+====================================================
+
