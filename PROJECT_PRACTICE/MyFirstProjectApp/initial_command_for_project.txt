@@ -2,7 +2,9 @@
 9.5.1
 
 // for project creation steps 
-# npm init  
+# npm init 
+or 
+# npm init -y 
 
 -> enter package name 
 
