@@ -1,7 +1,9 @@
 const routes = require("express").Router() 
 const { trusted } = require("mongoose");
-const Chairman = require("../models/chairman");
 
+
+const Chairman = require("../models/chairman");
+const Notice = require("../models/notice");
 
 routes.post("/addregister",async (req,res)=> {
     console.log("====> register method called")
@@ -41,6 +43,20 @@ routes.post("/login-Evalute",async(req,res)=>{
     }
 })
 
+routes.post("/add-notice-data",async (req,res)=>{
+    
+    try
+    {
+        const notice = new Notice(req.body)
+        await notice.save()
+        res.render("add_notice",{'msg':'successfully Notice Added'})
+    }
+    catch(error)
+    {
+        res.render("add_notice",{'emsg': "something went wrong"})
+    }
+})
+
 routes.get("/",(req,res)=>{
     res.render("login")
 })
@@ -57,6 +73,12 @@ routes.get("/profile",(req,res)=>{
 routes.get("/register",(req,res)=>{
     res.render("register")
 })
+
+
+routes.get("/add_notice",(req,res)=>{
+    res.render("add_notice")
+})
+
 routes.get("*",(req,res)=>{
     res.render("page404")
 })
