@@ -74,9 +74,14 @@ routes.get("/register",(req,res)=>{
     res.render("register")
 })
 
-
 routes.get("/add_notice",(req,res)=>{
     res.render("add_notice")
+})
+
+routes.get("/view_notice",async (req,res)=>{
+    const noticeData = await Notice.find()
+    console.log("====>>> all notice : ",noticeData)
+    res.render("notice_list",{'noticeData':noticeData})
 })
 
 routes.get("*",(req,res)=>{
