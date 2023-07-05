@@ -57,6 +57,25 @@ routes.post("/add-notice-data",async (req,res)=>{
     }
 })
 
+routes.get("/view_notice",async (req,res)=>{
+    const noticeData = await Notice.find()
+    //console.log("====>>> all notice : ",noticeData)
+    res.render("notice_list",{'noticeData':noticeData})
+})
+
+routes.get("/del-notice",async (req,res)=>{
+    try {
+        const id = req.query.did
+        console.log("===+>>>",id)
+        console.log("notice del called ")
+        //sawait Notice.findByIdAndDelete(id)
+        res.redirect('view_notice')
+         
+    } catch (error) {
+        
+    }
+})
+
 routes.get("/",(req,res)=>{
     res.render("login")
 })
@@ -78,11 +97,7 @@ routes.get("/add_notice",(req,res)=>{
     res.render("add_notice")
 })
 
-routes.get("/view_notice",async (req,res)=>{
-    const noticeData = await Notice.find()
-    console.log("====>>> all notice : ",noticeData)
-    res.render("notice_list",{'noticeData':noticeData})
-})
+
 
 routes.get("*",(req,res)=>{
     res.render("page404")

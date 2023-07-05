@@ -29,8 +29,10 @@
                 </div>                    
                 <div class="body">
                     <p>{{this.description}}</p>
-                    <a href="detail.html" title="Edit" class="btn btn-round btn-edit">Edit</a>                        
-                    <a href="detail.html" title="Delete" class="btn btn-round btn-delete">Delete</a>
+                    <a href="edit?eid={{this._id}}" title="Edit" class="btn btn-round btn-edit">Edit</a>                        
+                    <a href="del-notice?did={{this._id}}" title="Delete" class="btn btn-round btn-delete">Delete</a>
+
+                    {{!-- <a href="delete?did={{this._id}}&&name={{this.name}}" title="Delete" class="btn btn-round btn-delete">Delete</a> --}}
                 </div>
             </div>
             {{/each}}
